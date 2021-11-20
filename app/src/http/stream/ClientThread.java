@@ -1,5 +1,6 @@
 package http.stream;
 
+import http.factory.HttpReplyFactory;
 import http.factory.HttpRequestFactory;
 import http.server.HttpReply;
 import http.server.HttpRequest;
@@ -29,22 +30,16 @@ public class ClientThread extends Thread {
 	@Override
 	public void run() {
 		try {
-			// Construction de la requête
+			// build request
 			HttpRequest httpRequest = HttpRequestFactory.buildHttpRequest(in);
-			// Construction de la réponse
-			HttpReply httpReply = this.reply(httpRequest);
-			// Envoi de la réponse
+			// build reply
+			HttpReply httpReply = HttpReplyFactory.buildHttpReply(httpRequest);
+			// send reply
 			this.out.println(httpReply.toString());
-			// Fermeture du socket
+			// clode socket
 			clientSocket.close();
 		} catch (IOException e) {
 			System.out.println("Failed to parse request");
 		}
-	}
-
-	private HttpReply reply(HttpRequest httpRequest) {
-		HttpReply httpReply = new HttpReply();
-
-		return httpReply;
 	}
 }

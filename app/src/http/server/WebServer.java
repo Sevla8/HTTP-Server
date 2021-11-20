@@ -25,7 +25,8 @@ public class WebServer {
 				// remote is now the connected socket
 				ClientThread clientThread = new ClientThread(remote);
 				clientThread.start();
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				System.out.println("Error: " + e);
 			}
 		}
