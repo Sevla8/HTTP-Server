@@ -1,5 +1,6 @@
 package http.server;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ public class HttpReply {
 	private Integer code;
 	private  String status;
 	private Hashtable<String, String> header;
-	private String reply;
+	private ByteArrayOutputStream reply;
 
 	public HttpReply() {
 		this.version = "HTTP/1.1";
@@ -26,7 +27,7 @@ public class HttpReply {
 		this.header = header;
 	}
 
-	public void setReply(String reply) {
+	public void setReply(ByteArrayOutputStream reply) {
 		this.reply = reply;
 	}
 

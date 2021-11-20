@@ -56,6 +56,8 @@ public class HttpRequestFactory {
 			case "PUT":
 				httpRequest.setMethod(HttpMethod.PUT);
 				break;
+			default:
+				return null;
 		}
 
 		// resource (brut)
