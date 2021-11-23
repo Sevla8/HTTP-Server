@@ -4,10 +4,13 @@ import http.server.HttpMethod;
 import http.server.HttpReply;
 import http.server.HttpRequest;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -82,6 +85,10 @@ public class HttpReplyFactory {
 						}
 						case "jpg", "jpeg": {
 							header.put("Content-Type", "image/jpeg");
+							break;
+						}
+						case "mp3" : {
+							header.put("Content-Type", "audio/mp3");
 							break;
 						}
 						default:
@@ -275,6 +282,7 @@ public class HttpReplyFactory {
 			}
 		}
 
+		System.out.println(httpReply.toString());
 		return httpReply;
 	}
 }
