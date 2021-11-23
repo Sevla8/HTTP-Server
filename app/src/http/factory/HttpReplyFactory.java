@@ -91,6 +91,10 @@ public class HttpReplyFactory {
 							header.put("Content-Type", "audio/mp3");
 							break;
 						}
+						case "mp4" : {
+							header.put("Content-Type", "video/mp4");
+							break;
+						}
 						default:
 							header.put("Content-Type", "text/plain");
 					}
@@ -282,7 +286,6 @@ public class HttpReplyFactory {
 			}
 		}
 
-		System.out.println(httpReply.toString());
 		return httpReply;
 	}
 }
