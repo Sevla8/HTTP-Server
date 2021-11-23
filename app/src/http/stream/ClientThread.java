@@ -5,10 +5,7 @@ import http.factory.HttpRequestFactory;
 import http.server.HttpReply;
 import http.server.HttpRequest;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 public class ClientThread extends Thread {
@@ -35,7 +32,11 @@ public class ClientThread extends Thread {
 			// build reply
 			HttpReply httpReply = HttpReplyFactory.buildHttpReply(httpRequest);
 			// send reply
-			this.out.println(httpReply.toString());
+			this.out.println(httpReply.getHeader());
+			OutputStream os = this.clientSocket.getOutputStream();
+			os.write(httpReply.getReply());
+			os.flush();
+			os.close();
 			// clode socket
 			clientSocket.close();
 		} catch (IOException e) {
