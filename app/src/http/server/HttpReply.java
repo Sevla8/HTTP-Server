@@ -31,9 +31,8 @@ public class HttpReply {
 		this.reply = reply;
 	}
 
-	@Override
-	public String toString() {
-		String str = "";
+	public String getHeader() {
+		String str;
 		str =  this.version + " " +
 				this.code + " " +
 				this.status + "\r\n";
@@ -42,8 +41,10 @@ public class HttpReply {
 				str += entry.getKey() + ": " + entry.getValue() + "\r\n";
 			}
 		}
-		str += "\r\n";
-		str += this.reply;
 		return str;
+	}
+
+	public byte[] getReply() {
+		return this.reply.toByteArray();
 	}
 }
