@@ -4,21 +4,26 @@ import http.server.HttpMethod;
 import http.server.HttpReply;
 import http.server.HttpRequest;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.Optional;
 
+/**
+ * Usine à construire des réponses HTTP.
+ */
 public class HttpReplyFactory {
+	/**
+	 * Construit une réponse HTTP.
+	 * @param httpRequest Requête HTTP à partir de laquelle la réponse HTTP est construite.
+	 * @return Réponse HTTP.
+	 * @throws IOException
+	 */
 	public static HttpReply buildHttpReply(HttpRequest httpRequest) throws IOException {
 		HttpReply httpReply = new HttpReply();
 

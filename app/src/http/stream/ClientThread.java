@@ -8,11 +8,27 @@ import http.server.HttpRequest;
 import java.io.*;
 import java.net.Socket;
 
+/**
+ * Représente un fil d'exécution du serveur web. Gère une requête web.
+ */
 public class ClientThread extends Thread {
-	private Socket clientSocket;
+	/**
+	 * Socket lié au client qui requête le serveur.
+	 */
+	private final Socket clientSocket;
+	/**
+	 * Buffer de lecture du socket.
+	 */
 	private BufferedReader in;
+	/**
+	 * Buffer d'écriture du socket.
+	 */
 	private PrintWriter out;
 
+	/**
+	 * Constructeur du fil d'exécution du serveur web.
+	 * @param remote Socket associé à un client web.
+	 */
 	public ClientThread(Socket remote) {
 		this.clientSocket = remote;
 		try {
@@ -24,6 +40,9 @@ public class ClientThread extends Thread {
 		}
 	}
 
+	/**
+	 * Lance le fil d'exécution du serveur web.
+	 */
 	@Override
 	public void run() {
 		try {

@@ -5,30 +5,18 @@ import http.server.HttpRequest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Hashtable;
 
-//GET /index.html?ds=evf&g=o&ph=l HTTP/1.1\r\n
-//Host: atasoyweb.net\r\n
-//User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:14.0) Gecko/20100101 Firefox/14.0.1\r\n
-//Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n
-//Accept-Language: tr-tr,tr;q=0.8,en-us;q=0.5,en;q=0.3\r\n
-//Accept-Encoding: gzip, deflate\r\n
-//Connection: keep-alive\r\n\r\n
-
-//POST /index.html HTTP/1.1\r\n
-//Host: atasoyweb.net\r\n
-//User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20100101 Firefox/15.0.1\r\n
-//Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n
-//Accept-Language: tr-tr,tr;q=0.8,en-us;q=0.5,en;q=0.3\r\n
-//Accept-Encoding: gzip, deflate\r\n
-//Connection: keep-alive\r\n
-//Referer: http://atasoyweb.net/\r\n
-//Content-Type: application/x-www-form-urlencoded\r\n
-//Content-Length: 35\r\n\r\n
-//variable1=value1&variable2=value2
-
+/**
+ * Usine à construire des requêtes HTTP.
+ */
 public class HttpRequestFactory {
+	/**
+	 * Construit une requête HTTP à partir d'un buffer d'entrée.
+	 * @param in Buffer d'entrée
+	 * @return Requête HTTP
+	 * @throws IOException
+	 */
 	public static HttpRequest buildHttpRequest(BufferedReader in) throws IOException {
 		HttpRequest httpRequest = new HttpRequest();
 

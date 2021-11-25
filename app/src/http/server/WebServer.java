@@ -6,15 +6,32 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * Représente un serveur web.
+ */
 public class WebServer {
-	private ServerSocket serverSocket;
-	private Integer port;
+	/**
+	 * Socket du serveur web.
+	 */
+	private final ServerSocket serverSocket;
+	/**
+	 * Port sur lequel tourne le service HTTP.
+	 */
+	private final Integer port;
 
+	/**
+	 * Constructeur du serveur web.
+	 * @param port Port sur lequel tourne le service HTTP.
+	 * @throws IOException
+	 */
 	public WebServer(Integer port) throws IOException {
 		this.port = port;
 		this.serverSocket = new ServerSocket(this.port);
 	}
 
+	/**
+	 * Lance le serveur web.
+	 */
 	protected void start() {
 		System.out.println("Webserver starting up on port 3000");
 		System.out.println("Waiting for connection");
@@ -32,13 +49,16 @@ public class WebServer {
 		}
 	}
 
+	/**
+	 * Constuit et lance le serveur web.
+	 * @param args Arguments de la ligne de commande.
+	 */
 	public static void main(String args[]) {
-		WebServer ws = null;
 		try {
-			ws = new WebServer(3000);
+			WebServer ws = new WebServer(3000);
+			ws.start();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		ws.start();
 	}
 }

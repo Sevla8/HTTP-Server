@@ -8,13 +8,36 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/**
+ * Représente un client web qui accède au serveur web.
+ */
 public class WebPing {
+	/**
+	 * Socket du client web.
+	 */
 	private Socket socket;
-	private String httpServerHost;
-	private Integer httpServerPort;
+	/**
+	 * Hote auquel se connecte le client web.
+	 */
+	private final String httpServerHost;
+	/**
+	 * Port sur lequel se connecte le client web au serveur web.
+	 */
+	private final Integer httpServerPort;
+	/**
+	 * Buffer de lecture du socket.
+	 */
 	private BufferedReader in;
+	/**
+	 * Buffer d'écriture du socket.
+	 */
 	private PrintWriter out;
 
+	/**
+	 * Constructeur de WebPing.
+	 * @param httpServerHost Hote auquel se connecte le client web.
+	 * @param httpServerPort Port sur lequel se connecte le client web au serveur web.
+	 */
 	public WebPing(String httpServerHost, Integer httpServerPort) {
 		this.httpServerHost = httpServerHost;
 		this.httpServerPort = httpServerPort;
@@ -32,6 +55,9 @@ public class WebPing {
 		}
 	}
 
+	/**
+	 * Test d'une requête GET.
+	 */
 	public void testGET() {
 		this.out.println("GET /index.html?parameter1=value1&parameter2=value2 HTTP/1.1\r\n");
 		this.out.print("Host: " + this.httpServerHost + "\r\n\r\n");
@@ -40,6 +66,9 @@ public class WebPing {
 		this.listen();
 	}
 
+	/**
+	 * Test d'une requête POST.
+	 */
 	public void testPOST() {
 		this.out.print("POST /index.html HTTP/1.1\r\n");
 		this.out.print("Host: " + this.httpServerHost + "\r\n");
@@ -57,6 +86,9 @@ public class WebPing {
 		this.listen();
 	}
 
+	/**
+	 * Test d'une requête HEAD.
+	 */
 	public void testHEAD() {
 		this.out.print("HEAD /index.html HTTP/1.1\r\n");
 		this.out.print("Host: " + this.httpServerHost + "\r\n");
@@ -73,6 +105,9 @@ public class WebPing {
 		this.listen();
 	}
 
+	/**
+	 * Test d'une requête DELETE.
+	 */
 	public void testDELETE() {
 		this.out.print("DELETE /tmp.html HTTP/1.1\r\n");
 		this.out.print("Host: " + this.httpServerHost + "\r\n");
@@ -89,6 +124,9 @@ public class WebPing {
 		this.listen();
 	}
 
+	/**
+	 * Test d'une requête PUT
+	 */
 	public void testPUT() {
 		this.out.print("PUT /index.html HTTP/1.1\r\n");
 		this.out.print("Host: " + this.httpServerHost + "\r\n");
@@ -106,6 +144,9 @@ public class WebPing {
 		this.listen();
 	}
 
+	/**
+	 * Test d'une requête erronée.
+	 */
 	public  void testError() {
 		this.out.println("sfkjsd fksdbfksjdfsc skvjb");
 		this.out.print("sjh khsdbbc xsdj");
@@ -117,6 +158,9 @@ public class WebPing {
 		this.listen();
 	}
 
+	/**
+	 * Test d'une requête GET accèdant à une resource binaire.
+	 */
 	public  void testImage() {
 		this.out.println("GET /image.png HTTP/1.1\r\n");
 		this.out.print("Host: " + this.httpServerHost + "\r\n\r\n");
@@ -125,6 +169,9 @@ public class WebPing {
 		this.listen();
 	}
 
+	/**
+	 * Lance le processus d'écoute du serveur web.
+	 */
 	private void listen() {
 		try {
 			String reply;
@@ -140,6 +187,10 @@ public class WebPing {
 		}
 	}
 
+	/**
+	 * Lance le client web et se connecte au serveur web.
+	 * @param args Arguments de la ligne de commande.
+	 */
 	public static void main(String[] args) {
 		if (args.length != 2) {
 			System.err.println("Usage java WebPing <server host name> <server port number>");
