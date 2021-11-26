@@ -56,7 +56,7 @@ public class ClientThread extends Thread {
 			os.write(httpReply.getReply());
 			os.flush();
 			os.close();
-			// clode socket
+			// close socket
 			clientSocket.close();
 		} catch (IOException e) {
 			System.out.println("Failed to parse request");

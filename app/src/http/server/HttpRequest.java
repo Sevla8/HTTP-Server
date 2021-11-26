@@ -2,6 +2,9 @@ package http.server;
 
 import java.util.Hashtable;
 
+/**
+ * Représente une requête HTTP.
+ */
 public class HttpRequest {
 	/**
 	 * Méthode de la requête HTTP.
