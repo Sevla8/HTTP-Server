@@ -109,7 +109,7 @@ public class WebPing {
 	 * Test d'une requête DELETE.
 	 */
 	public void testDELETE() {
-		this.out.print("DELETE /tmp.html HTTP/1.1\r\n");
+		this.out.print("DELETE /image.png HTTP/1.1\r\n");
 		this.out.print("Host: " + this.httpServerHost + "\r\n");
 		this.out.print("User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20100101 Firefox/15.0.1\r\n");
 		this.out.print("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n");
@@ -128,7 +128,7 @@ public class WebPing {
 	 * Test d'une requête PUT
 	 */
 	public void testPUT() {
-		this.out.print("PUT /index.html HTTP/1.1\r\n");
+		this.out.print("PUT /index98.html HTTP/1.1\r\n");
 		this.out.print("Host: " + this.httpServerHost + "\r\n");
 		this.out.print("User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20100101 Firefox/15.0.1\r\n");
 		this.out.print("Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n");
@@ -205,9 +205,9 @@ public class WebPing {
 //		webPing.testGET();
 //		webPing.testPOST();
 //		webPing.testHEAD();
-//		webPing.testDELETE();
+		webPing.testDELETE();
 //		webPing.testPUT();
 //		webPing.testError();
-		webPing.testImage();
+//		webPing.testImage();
 	}
 }
